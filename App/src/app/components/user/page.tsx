@@ -8,15 +8,25 @@ import { IconUser } from '@tabler/icons-react'
 import FormularioUsuario from '../usuario/FormularioUsuario'
 import usuarios from '@/app/data/constants/Usuarios'
 import { Usuario } from '@/core/model/Usuario'
+import Backend from '@/backend'
+
+
 
 
 const User = () => {
-  const [usuario,setUsuario] = useState<Usuario>(usuarios[0])
+  const [usuario,setUsuario] = useState<Partial<Usuario> | null>(null)
+  const [usuarios,setUsuarios] = useState<Usuario[]>([])
+
+  const salvar = () => {
+    if(!usuario) return
+    Backend.usuarios.salvar(usuario)
+  }
+
   return (
     <Pagina className='flex flex-col gap-10'>
        <Titulo Icone={IconUser} principal='usuarios' secundario='cadastro de usuarios'/>
-       {/*<ListaUsuario/>*/}
-       <FormularioUsuario usuario={usuarios[0]} onChange={setUsuario} />
+       {usuario ? <FormularioUsuario usuario={usuario} onChange={setUsuario} salvar={salvar} cancelar={()=>{}}/> : ( <ListaUsuario/> )}
+      
     </Pagina>
   )
 }
