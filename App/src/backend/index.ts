@@ -5,6 +5,6 @@ import obterTodos from "./obterTodos"
 export default class Backend {
     static readonly usuarios = {
         salvar: salvarUsuario,
-        obterTodos
+        obter: obterTodos
     }
 }

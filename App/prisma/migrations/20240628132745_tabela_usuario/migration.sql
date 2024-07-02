@@ -6,5 +6,6 @@ CREATE TABLE "User" (
     "senha" TEXT NOT NULL
 );
 
+
 -- CreateIndex
 CREATE UNIQUE INDEX "User_email_key" ON "User"("email");

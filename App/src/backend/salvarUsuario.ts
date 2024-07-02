@@ -14,6 +14,7 @@ export default async function salvarUsuario(usuario: Partial<Usuario>) {
         ...usuario,
         id: usuario.id ?? Id.novo
     }
+    alert('artur')
 
     RepositorioUsuario.salvar(novoUsuario as Usuario)
 
